@@ -4,59 +4,87 @@ import React, { Component } from 'react';
 import Customer from './components/Customer'
 import './App.css';
 
-const customers = [
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import { withStyles } from '@mui/material/styles';
+
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+    margintTop: 50,
+    overflowX: "auto"
+  },
+  table: {
+    minWidth: 1080
+  }
+})
+
+const customers = [ 
 {
   'id': 1,
-  'image': 'http://placeimg.com/64/64/1',
-  'name': '김민섭dd',
-  'birthday': '950420',
-  'gender' : '남자',
-  'job': '경영지원실'
+  'company': '필에너지',
+  'name': '김민섭',
+  'department' : '경영지원팀',
+  'equipment': '노트북, 모니터'
 },
 
 {
   'id': 2,
-  'image': 'http://placeimg.com/64/64/2',
-  'name': '전소영',
-  'birthday': '9600000',
-  'gender' : '남자',
-  'job': '블로그담당자'
+  'company': '필옵틱스',
+  'name': '신철',
+  'department' : '경영지원팀',
+  'equipment': '데스크톱, 모니터2EA, 마우스1EA'
 },
 
 {
   'id': 3,
-  'image': 'http://placeimg.com/64/64/3',
-  'name': '이상준',
-  'birthday': '900000',
-  'gender' : '남자',
-  'job': '경영지원실'
+  'company': '필에너지',
+  'name': '강덕환',
+  'department' : '경영지원팀',
+  'equipment': '노트북, 태블릿'
 }
 ]
 
 // components의 Customer.js 불러와서 App component안에서 출력
 class App extends Component{
   render() {
+    const { classes } = this.props;
     return (
-      <div>
-          {
-            //반복함수 이용 원소를 c로 순회, map 사용시 key 이용해야함
-            customers.map(c => {
+     <Paper className={classes.root}>
+      <Table className={classes.table}>
+        <TableHead>
+          <TableRow>
+            <TableCell>번호</TableCell>
+            <TableCell>소속</TableCell>
+            <TableCell>이름</TableCell>
+            <TableCell>부서</TableCell>
+            <TableCell>비품</TableCell>
+          </TableRow>
+         </TableHead>
+       <TableBody> 
+        { customers.map(c => {
               return (
                 <Customer
                 key={c.id}
                 id={c.id}
-                image={c.image}
+                company={c.company}
                 name={c.name}
-                birthday={c.name}
-                gender={c.gender}
-                job={c.job}
+                department={c.department}
+                equipment={c.equipment}
                 />
               );
             })
           }
-        </div>
+          </TableBody>
+        </Table>
+        </Paper>
     );
   }
 }
 
-export default App;
+export default withStyles(styles)(App);
