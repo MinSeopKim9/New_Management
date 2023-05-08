@@ -3,26 +3,26 @@
 import React, { Component } from 'react';
 import Customer from './components/Customer'
 import './App.css';
-
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { withStyles } from '@mui/material/styles';
+import TableContainer from '@mui/material/TableContainer';
+//import { withStyles } from "@mui/material/styles";
 
 
-const styles = theme => ({
+  /* const styles = theme => ({
   root: {
     width: '100%',
-    margintTop: 50,
-    overflowX: "auto"
+    margintTop: theme.spacing.unit * 3,
+    overflow: "auto"
   },
   table: {
-    minWidth: 1080
+    maxWidth: 1080
   }
-})
+})  */
 
 const customers = [ 
 {
@@ -53,10 +53,9 @@ const customers = [
 // components의 Customer.js 불러와서 App component안에서 출력
 class App extends Component{
   render() {
-    const { classes } = this.props;
     return (
-     <Paper className={classes.root}>
-      <Table className={classes.table}>
+         <TableContainer component={Paper} sx={{maxHeight:'1080px'}}>
+          <Table stickyHeader sx={{maxWidth: '1080px', minWidth: '1080px'}}>
         <TableHead>
           <TableRow>
             <TableCell>번호</TableCell>
@@ -81,10 +80,11 @@ class App extends Component{
             })
           }
           </TableBody>
-        </Table>
-        </Paper>
+          </Table>
+        </TableContainer>
     );
   }
 }
 
-export default withStyles(styles)(App);
+export default App;
+//export default withStyles(styles)(App);
