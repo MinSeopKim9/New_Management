@@ -8,7 +8,7 @@ const customers = [
 {
   'id': 1,
   'image': 'http://placeimg.com/64/64/1',
-  'name': '김민섭d',
+  'name': '김민섭dd',
   'birthday': '950420',
   'gender' : '남자',
   'job': '경영지원실'
