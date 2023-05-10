@@ -54,7 +54,7 @@ const customers = [
 class App extends Component{
   render() {
     return (
-         <TableContainer component={Paper} sx={{maxHeight:'1080px'}}>
+         <TableContainer component={Paper}>
           <Table stickyHeader sx={{maxWidth: '1080px', minWidth: '1080px'}}>
         <TableHead>
           <TableRow>
